@@ -1,0 +1,292 @@
+.container {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+}
+
+.assignment-header {
+  background: linear-gradient(135deg, #4A90E2 0%, #67B26F 100%);
+  padding: 40rpx 30rpx;
+  color: white;
+}
+
+.assignment-header .title {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.assignment-header .meta {
+  display: flex;
+  gap: 30rpx;
+  font-size: 26rpx;
+  opacity: 0.9;
+}
+
+.section {
+  background: white;
+  margin: 30rpx;
+  border-radius: 15rpx;
+  padding: 30rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.section .content {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+.section .deadline {
+  font-size: 28rpx;
+  color: #FF6B6B;
+}
+
+.my-submission {
+  margin-top: 15rpx;
+}
+
+.submission-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.submission-info .status {
+  padding: 5rpx 15rpx;
+  border-radius: 10rpx;
+  font-size: 22rpx;
+}
+
+.submission-info .status.graded {
+  background: #E8F5E9;
+  color: #4CAF50;
+}
+
+.submission-info .status.pending {
+  background: #FFF3E0;
+  color: #FF9800;
+}
+
+.submission-info .time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.submission-content {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+  padding: 20rpx;
+  background: #F5F5F5;
+  border-radius: 10rpx;
+  margin-bottom: 15rpx;
+}
+
+.score-section {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background: #E8F5E9;
+  border-radius: 10rpx;
+}
+
+.score-section .score {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #4CAF50;
+  margin-bottom: 10rpx;
+}
+
+.score-section .feedback {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.no-submission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0;
+}
+
+.no-submission text {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+}
+
+.submit-btn {
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #4A90E2;
+  color: white;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+}
+
+.submit-btn::after {
+  border: none;
+}
+
+.submission-list {
+  margin-top: 15rpx;
+}
+
+.submission-item {
+  padding: 30rpx;
+  border: 1rpx solid #E5E5E5;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.submission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.student-info .name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.student-info .student-id {
+  font-size: 22rpx;
+  color: #999;
+  margin-left: 15rpx;
+}
+
+.submission-status .status {
+  padding: 5rpx 15rpx;
+  border-radius: 10rpx;
+  font-size: 22rpx;
+}
+
+.submission-status .status.graded {
+  background: #E8F5E9;
+  color: #4CAF50;
+}
+
+.submission-status .status.pending {
+  background: #FFF3E0;
+  color: #FF9800;
+}
+
+.submission-time {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.grade-form {
+  display: flex;
+  gap: 15rpx;
+  margin-top: 20rpx;
+}
+
+.score-input {
+  flex: 1;
+  height: 60rpx;
+  padding: 0 15rpx;
+  border: 2rpx solid #E5E5E5;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+}
+
+.feedback-input {
+  flex: 2;
+  height: 60rpx;
+  padding: 0 15rpx;
+  border: 2rpx solid #E5E5E5;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+}
+
+.grade-btn {
+  background: #4A90E2;
+  color: white;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 30rpx 30rpx 0 0;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.modal-close {
+  font-size: 50rpx;
+  color: #999;
+  line-height: 1;
+}
+
+.modal-body {
+  padding: 30rpx;
+}
+
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.form-item .label {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 15rpx;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 200rpx;
+  padding: 20rpx;
+  border: 2rpx solid #E5E5E5;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}

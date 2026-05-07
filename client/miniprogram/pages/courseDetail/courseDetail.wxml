@@ -1,0 +1,102 @@
+<view class="container" wx:if="{{course}}">
+  <view class="course-header">
+    <view class="course-title">
+      <text class="name">{{course.name}}</text>
+      <view class="code-box" bindtap="copyCode">
+        <text class="code">{{course.code}}</text>
+        <text class="copy-hint">点击复制</text>
+      </view>
+    </view>
+    <view class="course-meta">
+      <text class="teacher">教师: {{course.teacher_name}}</text>
+      <text class="location" wx:if="{{course.location}}">{{course.location}}</text>
+    </view>
+  </view>
+
+  <view class="stats-bar">
+    <view class="stat-item">
+      <text class="num">{{members.length}}</text>
+      <text class="label">学生</text>
+    </view>
+    <view class="stat-item">
+      <text class="num">{{assignments.length}}</text>
+      <text class="label">作业</text>
+    </view>
+    <view class="stat-item">
+      <text class="num">{{questions.length}}</text>
+      <text class="label">问答</text>
+    </view>
+  </view>
+
+  <view class="tab-bar">
+    <view class="tab {{activeTab === 'home' ? 'active' : ''}}" data-tab="home" bindtap="switchTab">概览</view>
+    <view class="tab {{activeTab === 'assignments' ? 'active' : ''}}" data-tab="assignments" bindtap="switchTab">作业</view>
+    <view class="tab {{activeTab === 'questions' ? 'active' : ''}}" data-tab="questions" bindtap="switchTab">问答</view>
+  </view>
+
+  <view class="tab-content">
+    <view wx:if="{{activeTab === 'home'}}">
+      <view class="action-section" wx:if="{{course.teacher_id === userInfo.id}}">
+        <button class="action-btn primary" bindtap="goToCheckin">发起签到</button>
+      </view>
+
+      <view class="info-section">
+        <text class="section-title">课程信息</text>
+        <view class="info-item">
+          <text class="label">课程描述</text>
+          <text class="value">{{course.description || '暂无描述'}}</text>
+        </view>
+        <view class="info-item" wx:if="{{course.class_time}}">
+          <text class="label">上课时间</text>
+          <text class="value">{{course.class_time}}</text>
+        </view>
+      </view>
+
+      <view class="members-section">
+        <text class="section-title">学生列表 ({{members.length}}人)</text>
+        <view class="member-list">
+          <view class="member-item" wx:for="{{members}}" wx:key="id">
+            <text class="member-name">{{item.name}}</text>
+            <text class="member-id" wx:if="{{item.student_id}}">{{item.student_id}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{activeTab === 'assignments'}}">
+      <view class="empty" wx:if="{{assignments.length === 0}}">
+        <text>暂无作业</text>
+      </view>
+      <view class="assignment-list" wx:else>
+        <view class="assignment-item" wx:for="{{assignments}}" wx:key="id" data-id="{{item.id}}" bindtap="goToAssignment">
+          <view class="assignment-info">
+            <text class="title">{{item.title}}</text>
+            <text class="meta">教师: {{item.teacher_name}}</text>
+          </view>
+          <view class="assignment-deadline" wx:if="{{item.deadline}}">
+            <text>截止: {{item.deadline}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{activeTab === 'questions'}}">
+      <view class="empty" wx:if="{{questions.length === 0}}">
+        <text>暂无问答</text>
+      </view>
+      <view class="question-list" wx:else>
+        <view class="question-item" wx:for="{{questions}}" wx:key="id" data-id="{{item.id}}" bindtap="goToQuestion">
+          <view class="question-header">
+            <text class="student">{{item.studentName}}</text>
+            <text class="status {{item.status}}">{{item.status === 'answered' ? '已回答' : '待回答'}}</text>
+          </view>
+          <text class="question-content">{{item.content}}</text>
+          <view class="answer-preview" wx:if="{{item.answer}}">
+            <text class="answer-teacher">{{item.answer.teacherName}}:</text>
+            <text class="answer-content">{{item.answer.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

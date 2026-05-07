@@ -1,0 +1,81 @@
+<view class="container">
+  <view class="header">
+    <view class="user-info">
+      <image class="avatar" src="{{userInfo.avatar || '/assets/icons/profile.png'}}"/>
+      <view class="info">
+        <text class="name">{{userInfo.name}}</text>
+        <text class="role-tag {{userInfo.role === 'teacher' ? 'teacher' : 'student'}}">
+          {{userInfo.role === 'teacher' ? '教师' : '学生'}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <view class="stats-card">
+    <view class="stat-item" bindtap="goToCourse">
+      <text class="stat-num">{{stats.courses}}</text>
+      <text class="stat-label">我的课程</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item" bindtap="goToCheckin">
+      <text class="stat-num">{{stats.checkins}}</text>
+      <text class="stat-label">进行中签到</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item" bindtap="goToAssignment">
+      <text class="stat-num">{{stats.assignments}}</text>
+      <text class="stat-label">作业</text>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{activeCheckins.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">正在进行中的签到</text>
+    </view>
+    <view class="checkin-list">
+      <view class="checkin-item" wx:for="{{activeCheckins}}" wx:key="id" data-id="{{item.id}}" data-code="{{item.code}}" bindtap="goToCheckin">
+        <view class="checkin-info">
+          <text class="course-name">{{item.course_name}}</text>
+          <text class="checkin-time">截止: {{item.end_time}}</text>
+        </view>
+        <view class="checkin-status">
+          <text class="status-text">去签到</text>
+          <text class="arrow">></text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{recentAssignments.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">最近作业</text>
+      <text class="more" bindtap="goToAssignment">查看更多 ></text>
+    </view>
+    <view class="assignment-list">
+      <view class="assignment-item" wx:for="{{recentAssignments}}" wx:key="id">
+        <view class="assignment-info">
+          <text class="assignment-title">{{item.title}}</text>
+          <text class="assignment-course">{{item.course_name}}</text>
+        </view>
+        <view class="assignment-deadline">
+          <text wx:if="{{item.deadline}}">截止: {{item.deadline}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="quick-actions">
+    <view class="action-item" bindtap="goToCourse">
+      <image class="action-icon" src="/assets/icons/course.png"/>
+      <text>我的课程</text>
+    </view>
+    <view class="action-item" bindtap="goToQuestions">
+      <image class="action-icon" src="/assets/icons/question.png"/>
+      <text>课堂问答</text>
+    </view>
+    <view class="action-item" bindtap="goToProfile">
+      <image class="action-icon" src="/assets/icons/profile.png"/>
+      <text>个人中心</text>
+    </view>
+  </view>
+</view>

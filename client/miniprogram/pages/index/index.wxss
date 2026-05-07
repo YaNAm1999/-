@@ -1,0 +1,199 @@
+.container {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+}
+
+.header {
+  background: linear-gradient(135deg, #4A90E2 0%, #67B26F 100%);
+  padding: 40rpx 30rpx;
+  color: white;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: white;
+}
+
+.info .name {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.info .role-tag {
+  display: inline-block;
+  padding: 5rpx 15rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  margin-top: 10rpx;
+}
+
+.info .role-tag.teacher {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.info .role-tag.student {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.stats-card {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  margin: -30rpx 30rpx 30rpx;
+  border-radius: 20rpx;
+  padding: 40rpx 0;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-num {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #4A90E2;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.stat-divider {
+  width: 1rpx;
+  background: #E5E5E5;
+}
+
+.section {
+  margin: 30rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.more {
+  font-size: 26rpx;
+  color: #4A90E2;
+}
+
+.checkin-list, .assignment-list {
+  background: white;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.checkin-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #F5F5F5;
+}
+
+.checkin-item:last-child {
+  border-bottom: none;
+}
+
+.checkin-info .course-name {
+  display: block;
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.checkin-time {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.checkin-status {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.status-text {
+  color: #4A90E2;
+  font-size: 28rpx;
+}
+
+.arrow {
+  color: #CCC;
+  font-size: 28rpx;
+}
+
+.assignment-item {
+  padding: 30rpx;
+  border-bottom: 1rpx solid #F5F5F5;
+}
+
+.assignment-item:last-child {
+  border-bottom: none;
+}
+
+.assignment-info .assignment-title {
+  display: block;
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.assignment-course {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.assignment-deadline {
+  font-size: 24rpx;
+  color: #FF6B6B;
+  margin-top: 10rpx;
+}
+
+.quick-actions {
+  display: flex;
+  justify-content: space-around;
+  margin: 30rpx;
+  background: white;
+  border-radius: 20rpx;
+  padding: 40rpx 0;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.action-icon {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.action-item text {
+  font-size: 26rpx;
+  color: #666;
+}

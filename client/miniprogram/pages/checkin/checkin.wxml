@@ -1,0 +1,87 @@
+<view class="container">
+  <view class="checkin-header" wx:if="{{checkinId && code}}">
+    <view class="code-display" bindtap="copyCode">
+      <text class="code-label">签到码</text>
+      <text class="code-value">{{code}}</text>
+      <text class="copy-hint">点击复制</text>
+    </view>
+    <view class="checkin-status" wx:if="{{status}}">
+      <text class="status-text {{status}}">{{status === 'present' ? '签到成功' : status === 'late' ? '迟到' : '未签到'}}</text>
+    </view>
+  </view>
+
+  <view class="checkin-card" wx:if="{{checkinId && !status}}">
+    <view class="card-title">
+      <text>签到</text>
+    </view>
+    <view class="card-content">
+      <text class="hint">确认签到？</text>
+      <button class="checkin-btn" bindtap="verifyCheckin" loading="{{loading}}">
+        我已到达
+      </button>
+    </view>
+  </view>
+
+  <view class="records-section" wx:if="{{records && records.length > 0}}">
+    <view class="section-title">
+      <text>签到记录</text>
+      <text class="count">已签到 {{records.length}} / {{records.length + absent.length}} 人</text>
+    </view>
+    <view class="record-list">
+      <view class="record-item present" wx:for="{{records}}" wx:key="id">
+        <view class="record-info">
+          <text class="name">{{item.name}}</text>
+          <text class="student-id" wx:if="{{item.student_id}}">{{item.student_id}}</text>
+        </view>
+        <view class="record-status">
+          <text class="status-tag {{item.status}}">{{item.status === 'present' ? '已到' : '迟到'}}</text>
+          <text class="time">{{item.checkin_time}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="absent-section" wx:if="{{absent && absent.length > 0}}">
+    <view class="section-title">
+      <text>未签到</text>
+    </view>
+    <view class="record-list">
+      <view class="record-item absent" wx:for="{{absent}}" wx:key="id">
+        <view class="record-info">
+          <text class="name">{{item.name}}</text>
+          <text class="student-id" wx:if="{{item.student_id}}">{{item.student_id}}</text>
+        </view>
+        <view class="record-status">
+          <text class="status-tag absent">缺勤</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="modal" wx:if="{{showCreateModal}}">
+    <view class="modal-mask" bindtap="toggleModal"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">发起签到</text>
+      </view>
+      <view class="modal-body">
+        <view class="form-item">
+          <text class="label">签到时长</text>
+          <picker mode="selector" range="{{[15, 30, 45, 60]}}" bindchange="onDurationChange">
+            <view class="picker-value">{{createForm.duration}} 分钟</view>
+          </picker>
+        </view>
+        <view class="form-item">
+          <view class="label-row">
+            <text class="label">启用位置验证</text>
+            <switch checked="{{createForm.enableLocation}}" bindchange="toggleLocation"/>
+          </view>
+          <view class="location-btn" wx:if="{{createForm.enableLocation}}" bindtap="getLocation">
+            <text>{{createForm.location ? '位置已获取' : '获取当前位置'}}</text>
+          </view>
+        </view>
+        <button class="submit-btn" bindtap="createCheckin">发起签到</button>
+      </view>
+    </view>
+  </view>
+</view>

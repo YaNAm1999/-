@@ -1,0 +1,92 @@
+.container {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  background: white;
+}
+
+.action-btns {
+  display: flex;
+  gap: 20rpx;
+}
+
+.action-btn {
+  padding: 15rpx 30rpx;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+}
+
+.action-btn.join {
+  background: #67B26F;
+  color: white;
+}
+
+.action-btn.create {
+  background: #4A90E2;
+  color: white;
+}
+
+.course-list {
+  padding: 20rpx;
+}
+
+.course-card {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15rpx;
+}
+
+.course-name {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.course-code {
+  background: #4A90E2;
+  color: white;
+  padding: 5rpx 15rpx;
+  border-radius: 10rpx;
+  font-size: 22rpx;
+}
+
+.course-info {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 15rpx;
+}
+
+.teacher {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.class-time {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.course-desc {
+  font-size: 26rpx;
+  color: #999;
+  line-height: 1.5;
+}
+
+.course-card:active {
+  opacity: 0.8;
+}

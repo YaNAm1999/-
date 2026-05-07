@@ -1,0 +1,132 @@
+.container {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+}
+
+.profile-header {
+  background: linear-gradient(135deg, #4A90E2 0%, #67B26F 100%);
+  padding: 60rpx 30rpx;
+  display: flex;
+  align-items: center;
+  gap: 30rpx;
+}
+
+.profile-header .avatar {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  background: white;
+}
+
+.profile-header .user-info .name {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10rpx;
+}
+
+.profile-header .user-info .role {
+  display: inline-block;
+  padding: 5rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.stats-card {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  margin: -30rpx 30rpx 30rpx;
+  border-radius: 20rpx;
+  padding: 40rpx 0;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-num {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #4A90E2;
+  margin-bottom: 10rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.info-section {
+  background: white;
+  margin: 0 30rpx 30rpx;
+  border-radius: 20rpx;
+  padding: 30rpx;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25rpx 0;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item .label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.info-item .value {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.action-list {
+  background: white;
+  margin: 0 30rpx 30rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.action-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+
+.action-item:last-child {
+  border-bottom: none;
+}
+
+.action-item .action-text {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.action-item .arrow {
+  font-size: 36rpx;
+  color: #CCC;
+}
+
+.logout-btn {
+  margin: 0 30rpx;
+  padding: 30rpx;
+  background: white;
+  border-radius: 20rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #FF6B6B;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}

@@ -1,0 +1,105 @@
+<view class="container">
+  <view class="header-bar">
+    <text class="page-title">课堂问答</text>
+    <view class="action-btn" bindtap="toggleCreateModal" wx:if="{{userInfo.role === 'student'}}">
+      <text>提问</text>
+    </view>
+  </view>
+
+  <view class="filter-bar">
+    <picker mode="selector" range="{{courses}}" range-key="name" bindchange="onCourseChange">
+      <view class="filter-value">
+        <text>{{selectedCourseName}}</text>
+        <text class="arrow">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <view class="empty" wx:elif="{{questions.length === 0}}">
+    <text>暂无问答</text>
+  </view>
+
+  <view class="question-list" wx:else>
+    <view class="question-card" wx:for="{{questions}}" wx:key="id">
+      <view class="question-header">
+        <view class="question-meta">
+          <text class="student">{{item.studentName}}</text>
+          <text class="course-tag">{{item.courseName}}</text>
+        </view>
+        <text class="status-tag {{item.status}}">{{item.status === 'answered' ? '已回答' : '待回答'}}</text>
+      </view>
+
+      <view class="question-content">
+        <text>{{item.content}}</text>
+      </view>
+
+      <view class="answer-section" wx:if="{{item.answer}}">
+        <view class="answer-header">
+          <text class="teacher">{{item.answer.teacherName}}</text>
+          <text class="answer-time">{{item.answer.createdAt}}</text>
+        </view>
+        <text class="answer-content">{{item.answer.content}}</text>
+      </view>
+
+      <view class="answer-btn" wx:if="{{userInfo.role === 'teacher' && !item.answer}}" data-id="{{item.id}}" bindtap="toggleAnswerModal">
+        <text>回答</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="modal" wx:if="{{showCreateModal}}">
+    <view class="modal-mask" bindtap="toggleCreateModal"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">发布问题</text>
+        <text class="modal-close" bindtap="toggleCreateModal">×</text>
+      </view>
+      <view class="modal-body">
+        <view class="form-item">
+          <text class="label">选择课程 *</text>
+          <picker mode="selector" range="{{courses}}" range-key="name" bindchange="onCourseSelect">
+            <view class="picker-value">
+              {{newCourseName}}
+            </view>
+          </picker>
+        </view>
+        <view class="form-item">
+          <text class="label">问题内容 *</text>
+          <textarea class="textarea" placeholder="请输入您的问题" value="{{newQuestion.content}}" bindinput="onQuestionContentInput"/>
+        </view>
+        <view class="form-item">
+          <view class="label-row">
+            <text class="label">匿名提问</text>
+            <switch checked="{{newQuestion.isAnonymous}}" bindchange="onAnonymousChange"/>
+          </view>
+        </view>
+        <button class="submit-btn" bindtap="createQuestion">发布</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="modal" wx:if="{{showAnswerModal && currentQuestion}}">
+    <view class="modal-mask" bindtap="toggleAnswerModal"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">回答问题</text>
+        <text class="modal-close" bindtap="toggleAnswerModal">×</text>
+      </view>
+      <view class="modal-body">
+        <view class="question-preview">
+          <text class="preview-label">问题</text>
+          <text class="preview-content">{{currentQuestion.content}}</text>
+        </view>
+        <view class="form-item">
+          <text class="label">回答内容 *</text>
+          <textarea class="textarea" placeholder="请输入回答内容" value="{{answerContent}}" bindinput="onAnswerInput"/>
+        </view>
+        <button class="submit-btn" bindtap="submitAnswer">提交回答</button>
+      </view>
+    </view>
+  </view>
+</view>
